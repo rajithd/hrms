@@ -1,0 +1,2 @@
+create database hrms;
+use hrms;
