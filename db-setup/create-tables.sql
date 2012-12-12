@@ -66,3 +66,5 @@ create table `dept_emp` (
 `to_date` date NOT NULL,
 primary key(dept_no,emp_no)
 );
+
+-- use https://launchpad.net/test-db/ as test data

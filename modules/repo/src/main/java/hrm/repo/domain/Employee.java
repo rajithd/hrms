@@ -1,6 +1,7 @@
 package hrm.repo.domain;
 
 
+import hrm.repo.util.EmployeeState;
 import hrm.repo.util.Gender;
 
 import java.util.Date;
@@ -22,6 +23,7 @@ public class Employee {
     private String departmentName;
     private Date fromDepartmentDate;
     private Date toDepartmentDate;
+    private EmployeeState status;
 
     public long getEmployeeNo() {
         return employeeNo;
@@ -141,5 +143,13 @@ public class Employee {
 
     public void setToDepartmentDate(Date toDepartmentDate) {
         this.toDepartmentDate = toDepartmentDate;
+    }
+
+    public EmployeeState getStatus() {
+        return status;
+    }
+
+    public void setStatus(EmployeeState status) {
+        this.status = status;
     }
 }

@@ -1,0 +1,6 @@
+#Source the following '.sql' scripts inside db-setup in the following order.
+##SOURCE <path to file>;
+1.create-databases.sql
+2.create-tables.sql
+3.source database dump in https://launchpad.net/test-db/
+4.alter-data.sql

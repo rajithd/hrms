@@ -15,3 +15,10 @@ alter table `departments` modify column id int auto_increment;
 
 -- add status column to employee
 alter table `employees` add column status enum('ACTIVE','INACTIVE') NOT NULL default 'ACTIVE';
+
+-- make employees id to auto_increment
+alter table `employees` modify column id bigint auto_increment;
+
+-- add sample users and authority
+insert into `users` values (10001,'georgi','1234');
+insert into `users` values (10002,'bazael','1234');

@@ -6,7 +6,7 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:repo.properties"/>
+    <context:property-placeholder location="classpath:repo-test.properties"/>
 
     <bean id="productionDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="${jdbc.driver}"/>
@@ -31,11 +31,9 @@
           p:dataSource-ref="productionDataSource"/>
 
     <bean id="departmentRepository" class="hrm.repo.impl.DepartmentRepositoryImpl"
-            p:jdbcTemplate-ref="jdbcTemplate"/>
+          p:jdbcTemplate-ref="jdbcTemplate"/>
 
     <bean class="hrm.repo.impl.EmployeeRepositoryImpl" id="employeeRepository"
           p:jdbcTemplate-ref="jdbcTemplate"/>
-
-
 
 </beans>
