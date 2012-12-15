@@ -20,5 +20,32 @@ alter table `employees` add column status enum('ACTIVE','INACTIVE') NOT NULL def
 alter table `employees` modify column id bigint auto_increment;
 
 -- add sample users and authority
-insert into `users` values (10001,'georgi','1234');
-insert into `users` values (10002,'bazael','1234');
+insert into `users` values (1,'admin','12345'); -- admin user
+insert into `users` values (2,'hr','12345'); -- hr user
+insert into `users` values (10001,'georgi','1234'); -- regular user
+insert into `users` values (10002,'bazael','1234'); -- regular user
+
+-- roles
+-- Regular employee - ROLE_VIEW_PROFILE,ROLE_SEARCH,ROLE_LOGIN,ROLE_CHANGE_PASSWORD
+-- HR Ex -  Re Em + ROLE_UPDATE_PROFILE, ROLE_CREATE_PROFILE
+-- admin - Hr Ex + ROLE_CREATE_DEPARTMENT,ROLE_USER_ACCOUNT_CREATION , ROLE_ADMIN_LOGIN
+insert into `authority` values(1,'ROLE_ADMIN_LOGIN');
+insert into `authority` values(1,'ROLE_CREATE_USER_ACCOUNT');
+insert into `authority` values(1,'ROLE_CREATE_DEPARTMENT');
+insert into `authority` values(1,'ROLE_UPDATE_PROFILE');
+insert into `authority` values(1,'ROLE_CREATE_PROFILE');
+insert into `authority` values(1,'ROLE_VIEW_PROFILE');
+insert into `authority` values(1,'ROLE_SEARCH');
+insert into `authority` values(1,'ROLE_CHANGE_PASSWORD');
+
+insert into `authority` values(2,'ROLE_HR_LOGIN');
+insert into `authority` values(2,'ROLE_UPDATE_PROFILE');
+insert into `authority` values(2,'ROLE_CREATE_PROFILE');
+insert into `authority` values(2,'ROLE_VIEW_PROFILE');
+insert into `authority` values(2,'ROLE_SEARCH');
+insert into `authority` values(2,'ROLE_CHANGE_PASSWORD');
+
+insert into `authority` values(10001,'ROLE_USER_LOGIN');
+insert into `authority` values(10001,'ROLE_VIEW_PROFILE');
+insert into `authority` values(10001,'ROLE_SEARCH');
+insert into `authority` values(10001,'ROLE_CHANGE_PASSWORD');

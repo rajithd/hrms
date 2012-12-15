@@ -29,7 +29,7 @@ create table `users`(
 
 DROP TABLE IF EXISTS `authority`;
 create table `authority` (
-`id` bigint(20) NOT NULL ,
+`emp_no` bigint(20) NOT NULL ,
 `role` VARCHAR (50) NOT NULL
  );
 

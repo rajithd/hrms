@@ -9,7 +9,7 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
     <beans:import resource="hrms-service.xml"/>
     <http>
-        <intercept-url pattern="/welcome" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/main" access="ROLE_ADMIN_LOGIN,ROLE_HR_LOGIN,ROLE_USER_LOGIN"/>
         <intercept-url pattern="/promotion" access="ROLE_ADMIN"/>
         <form-login login-page="/login" default-target-url="/main" authentication-failure-url="/login-error" always-use-default-target="true"/>
         <logout logout-success-url="/login"/>
@@ -22,7 +22,7 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
             <jdbc-user-service data-source-ref="productionDataSource"
                                users-by-username-query="select username,password, 'true' as enabled from users where username=?"
                                authorities-by-username-query="select users.username , authority.role as authorities from users,authority
-                      where users.username = ? AND users.id=authority.id" />
+                      where users.username = ? AND users.emp_no=authority.emp_no" />
         </authentication-provider>
     </authentication-manager>
 
