@@ -1,6 +1,7 @@
 package hrm.repo.impl;
 
 import hrm.repo.domain.Department;
+import hrm.repo.service.impl.DepartmentRepositoryImpl;
 import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;

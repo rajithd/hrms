@@ -13,6 +13,8 @@ update `departments` set `id`=9 where id='d009';
 
 alter table `departments` modify column id int auto_increment;
 
+alter table `dept_manager` modify column dept_no int;
+
 -- add status column to employee
 alter table `employees` add column status enum('ACTIVE','INACTIVE') NOT NULL default 'ACTIVE';
 
@@ -29,23 +31,23 @@ insert into `users` values (10002,'bazael','1234'); -- regular user
 -- Regular employee - ROLE_VIEW_PROFILE,ROLE_SEARCH,ROLE_LOGIN,ROLE_CHANGE_PASSWORD
 -- HR Ex -  Re Em + ROLE_UPDATE_PROFILE, ROLE_CREATE_PROFILE
 -- admin - Hr Ex + ROLE_CREATE_DEPARTMENT,ROLE_USER_ACCOUNT_CREATION , ROLE_ADMIN_LOGIN
-insert into `authority` values(1,'ROLE_ADMIN_LOGIN');
-insert into `authority` values(1,'ROLE_CREATE_USER_ACCOUNT');
-insert into `authority` values(1,'ROLE_CREATE_DEPARTMENT');
-insert into `authority` values(1,'ROLE_UPDATE_PROFILE');
-insert into `authority` values(1,'ROLE_CREATE_PROFILE');
-insert into `authority` values(1,'ROLE_VIEW_PROFILE');
-insert into `authority` values(1,'ROLE_SEARCH');
-insert into `authority` values(1,'ROLE_CHANGE_PASSWORD');
+insert into `authority` values(1,'ROLE_ADMIN_LOGIN','ADMIN_USER');
+insert into `authority` values(1,'ROLE_CREATE_USER_ACCOUNT','ADMIN_USER');
+insert into `authority` values(1,'ROLE_CREATE_DEPARTMENT','ADMIN_USER');
+insert into `authority` values(1,'ROLE_UPDATE_PROFILE','ADMIN_USER');
+insert into `authority` values(1,'ROLE_CREATE_PROFILE','ADMIN_USER');
+insert into `authority` values(1,'ROLE_VIEW_PROFILE','ADMIN_USER');
+insert into `authority` values(1,'ROLE_SEARCH','ADMIN_USER');
+insert into `authority` values(1,'ROLE_CHANGE_PASSWORD','ADMIN_USER');
 
-insert into `authority` values(2,'ROLE_HR_LOGIN');
-insert into `authority` values(2,'ROLE_UPDATE_PROFILE');
-insert into `authority` values(2,'ROLE_CREATE_PROFILE');
-insert into `authority` values(2,'ROLE_VIEW_PROFILE');
-insert into `authority` values(2,'ROLE_SEARCH');
-insert into `authority` values(2,'ROLE_CHANGE_PASSWORD');
+insert into `authority` values(2,'ROLE_HR_LOGIN','HR_EXECUTIVE');
+insert into `authority` values(2,'ROLE_UPDATE_PROFILE','HR_EXECUTIVE');
+insert into `authority` values(2,'ROLE_CREATE_PROFILE','HR_EXECUTIVE');
+insert into `authority` values(2,'ROLE_VIEW_PROFILE','HR_EXECUTIVE');
+insert into `authority` values(2,'ROLE_SEARCH','HR_EXECUTIVE');
+insert into `authority` values(2,'ROLE_CHANGE_PASSWORD','HR_EXECUTIVE');
 
-insert into `authority` values(10001,'ROLE_USER_LOGIN');
-insert into `authority` values(10001,'ROLE_VIEW_PROFILE');
-insert into `authority` values(10001,'ROLE_SEARCH');
-insert into `authority` values(10001,'ROLE_CHANGE_PASSWORD');
+insert into `authority` values(10001,'ROLE_USER_LOGIN','NORMAL_USER');
+insert into `authority` values(10001,'ROLE_VIEW_PROFILE','NORMAL_USER');
+insert into `authority` values(10001,'ROLE_SEARCH','NORMAL_USER');
+insert into `authority` values(10001,'ROLE_CHANGE_PASSWORD','NORMAL_USER');

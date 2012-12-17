@@ -30,10 +30,10 @@
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
           p:dataSource-ref="productionDataSource"/>
 
-    <bean id="departmentRepository" class="hrm.repo.impl.DepartmentRepositoryImpl"
+    <bean id="departmentRepository" class="hrm.repo.service.impl.DepartmentRepositoryImpl"
           p:jdbcTemplate-ref="jdbcTemplate"/>
 
-    <bean class="hrm.repo.impl.EmployeeRepositoryImpl" id="employeeRepository"
+    <bean class="hrm.repo.service.impl.EmployeeRepositoryImpl" id="employeeRepository"
           p:jdbcTemplate-ref="jdbcTemplate"/>
 
 </beans>

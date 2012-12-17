@@ -1,4 +1,4 @@
-package hrm.repo;
+package hrm.repo.service;
 
 
 import hrm.repo.domain.Employee;
@@ -18,5 +18,9 @@ public interface EmployeeRepository {
     public void changeEmployeeState(EmployeeState employeeState) throws SQLException;
 
     public List<Employee> findAllEmployee() throws SQLException;
+
+    public int findMaxEmployeeId();
+
+    public List<Employee> searchEmployeeByNames(String firstName, String lastName) throws SQLException;
 
 }

@@ -13,7 +13,7 @@
     <label>Username</label>
     <input type="text" name="j_username" /> <br/>
     <label>Password</label>
-    <input type="text" name="j_password"/>
+    <input type="password" name="j_password"/>
     <input  type="submit" value="Login"/>
 
 </form>

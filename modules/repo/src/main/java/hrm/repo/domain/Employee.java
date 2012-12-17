@@ -11,19 +11,14 @@ public class Employee {
     private long employeeNo;
     private String firstName;
     private String lastName;
-    private Date dateOfBirth;
-    private Gender gender;
-    private Date hireDate;
-    private String startingJobTitle;
-    private Date fromStartingJobTitleDate;
-    private Date toStartingJobTitleDate;
-    private Double salary;
-    private Date fromStartingSalaryDate;
-    private Date toStartingSalaryDate;
-    private String departmentName;
-    private Date fromDepartmentDate;
-    private Date toDepartmentDate;
+    private String dateOfBirth;
+    private String gender;
+    private String hireDate;
+    private Title title;
+    private Salary salary;
+    private EmployeeDepartment employeeDepartment;
     private EmployeeState status;
+    private String departmentSelect;
 
     public long getEmployeeNo() {
         return employeeNo;
@@ -49,100 +44,52 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public Date getHireDate() {
+    public String getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(Date hireDate) {
+    public void setHireDate(String hireDate) {
         this.hireDate = hireDate;
     }
 
-    public String getStartingJobTitle() {
-        return startingJobTitle;
+    public Title getTitle() {
+        return title;
     }
 
-    public void setStartingJobTitle(String startingJobTitle) {
-        this.startingJobTitle = startingJobTitle;
+    public void setTitle(Title title) {
+        this.title = title;
     }
 
-    public Date getFromStartingJobTitleDate() {
-        return fromStartingJobTitleDate;
-    }
-
-    public void setFromStartingJobTitleDate(Date fromStartingJobTitleDate) {
-        this.fromStartingJobTitleDate = fromStartingJobTitleDate;
-    }
-
-    public Date getToStartingJobTitleDate() {
-        return toStartingJobTitleDate;
-    }
-
-    public void setToStartingJobTitleDate(Date toStartingJobTitleDate) {
-        this.toStartingJobTitleDate = toStartingJobTitleDate;
-    }
-
-    public Double getSalary() {
+    public Salary getSalary() {
         return salary;
     }
 
-    public void setSalary(Double salary) {
+    public void setSalary(Salary salary) {
         this.salary = salary;
     }
 
-    public Date getFromStartingSalaryDate() {
-        return fromStartingSalaryDate;
+    public EmployeeDepartment getEmployeeDepartment() {
+        return employeeDepartment;
     }
 
-    public void setFromStartingSalaryDate(Date fromStartingSalaryDate) {
-        this.fromStartingSalaryDate = fromStartingSalaryDate;
-    }
-
-    public Date getToStartingSalaryDate() {
-        return toStartingSalaryDate;
-    }
-
-    public void setToStartingSalaryDate(Date toStartingSalaryDate) {
-        this.toStartingSalaryDate = toStartingSalaryDate;
-    }
-
-    public String getDepartmentName() {
-        return departmentName;
-    }
-
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
-
-    public Date getFromDepartmentDate() {
-        return fromDepartmentDate;
-    }
-
-    public void setFromDepartmentDate(Date fromDepartmentDate) {
-        this.fromDepartmentDate = fromDepartmentDate;
-    }
-
-    public Date getToDepartmentDate() {
-        return toDepartmentDate;
-    }
-
-    public void setToDepartmentDate(Date toDepartmentDate) {
-        this.toDepartmentDate = toDepartmentDate;
+    public void setEmployeeDepartment(EmployeeDepartment employeeDepartment) {
+        this.employeeDepartment = employeeDepartment;
     }
 
     public EmployeeState getStatus() {
@@ -151,5 +98,13 @@ public class Employee {
 
     public void setStatus(EmployeeState status) {
         this.status = status;
+    }
+
+    public String getDepartmentSelect() {
+        return departmentSelect;
+    }
+
+    public void setDepartmentSelect(String departmentSelect) {
+        this.departmentSelect = departmentSelect;
     }
 }

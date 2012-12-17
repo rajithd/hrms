@@ -30,12 +30,35 @@
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
           p:dataSource-ref="productionDataSource"/>
 
-    <bean id="departmentRepository" class="hrm.repo.impl.DepartmentRepositoryImpl"
+    <bean id="departmentRepository" class="hrm.repo.service.impl.DepartmentRepositoryImpl"
             p:jdbcTemplate-ref="jdbcTemplate"/>
 
-    <bean class="hrm.repo.impl.EmployeeRepositoryImpl" id="employeeRepository"
+    <bean class="hrm.repo.service.impl.EmployeeRepositoryImpl" id="employeeRepository"
           p:jdbcTemplate-ref="jdbcTemplate"/>
 
+    <bean class="hrm.repo.service.impl.TitleRepositoryImpl" id="titleRepository">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <bean class="hrm.repo.service.impl.SalaryRepositoryImpl" id="salaryRepository">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <bean class="hrm.repo.service.impl.DepartmentEmployeeRepositoryImpl" id="departmentEmployeeRepository">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <bean class="hrm.repo.service.impl.DepartmentManagerRepositoryImpl" id="departmentManagerRepository">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <bean class="hrm.repo.service.impl.AuthorityRepositoryImpl" id="authorityRepository">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <bean class="hrm.repo.service.impl.UserRepositoryImpl" id="userRepository">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
 
 
 </beans>

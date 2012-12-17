@@ -30,7 +30,8 @@ create table `users`(
 DROP TABLE IF EXISTS `authority`;
 create table `authority` (
 `emp_no` bigint(20) NOT NULL ,
-`role` VARCHAR (50) NOT NULL
+`role` VARCHAR (50) NOT NULL ,
+ `level` VARCHAR (50) NOT NULL
  );
 
 DROP TABLE IF EXISTS `salaries`;
