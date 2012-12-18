@@ -63,8 +63,13 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     @Override
-    public List<Employee> searchEmployeeByNames(String firstName, String lastName) throws SQLException {
-        final String sql = " select employees.first_name,employees.last_name,titles.title from employees,titles where first_name like '"+firstName+"%' or last_name like '"+lastName+"%' and employees.id=titles.emp_no limit 10";
+    public List<Employee> searchEmployeeByNames(String firstName, String lastName, int offset, int noOfRecords) throws SQLException {
+//        final String sql = " select employees.first_name,employees.last_name,titles.title from employees,titles where " +
+//                "first_name like '"+firstName+"%' or last_name like '"+lastName+"%' " +
+//                "and employees.id=titles.emp_no limit "+offset+","+noOfRecords ;
+        final String sql = " select employees.first_name,employees.last_name from employees where " +
+                "first_name like '"+firstName+"%' or last_name like '"+lastName+"%' " +
+                " limit "+offset+","+noOfRecords ;
         Object[] params = new Object[]{"@"+firstName,"@"+lastName};
         List<Employee> employees = jdbcTemplate.query(sql,new RowMapper<Employee>() {
             @Override
@@ -72,13 +77,19 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                 Employee employee = new Employee();
                 employee.setFirstName(resultSet.getString("first_name"));
                 employee.setLastName(resultSet.getString("last_name"));
-                Title title = new Title();
-                title.setTitleName(resultSet.getString("title"));
-                employee.setTitle(title);
+//                Title title = new Title();
+//                title.setTitleName(resultSet.getString("title"));
+//                employee.setTitle(title);
                 return employee;
             }
         });
         return employees;
+    }
+
+    @Override
+    public int noOfRecords() {
+        final String sql ="select count(*) from employees";
+        return jdbcTemplate.queryForInt(sql);
     }
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {

@@ -45,6 +45,51 @@
                 </tbody>
             </table>
         </c:when>
+
+        <c:when test="${not empty employees}">
+            <table border="2">
+                <thead style="color: gray">
+                <tr>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Title</td>
+                </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="employee" items="${employees}">
+                        <tr>
+                            <td><c:out value="${employee.firstName}" /></td>
+                            <td><c:out value="${employee.lastName}"/></td>
+                            <td><c:out value="${employee.lastName}"/></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+            <br/>
+            <c:if test="${currentPage != 1}">
+                <td><a href="employee.do?page=${currentPage - 1}">Previous</a></td>
+            </c:if>
+
+            <table border="1" cellpadding="5" cellspacing="5">
+                <tr>
+                    <c:forEach begin="1" end="${noOfPages}" var="i">
+                        <c:choose>
+                            <c:when test="${currentPage eq i}">
+                                <td>${i}</td>
+                            </c:when>
+                            <c:otherwise>
+                                <td><a href="employee.do?page=${i}">${i}</a></td>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </tr>
+            </table>
+
+            <c:if test="${currentPage lt noOfPages}">
+                <td><a href="employee.do?page=${currentPage + 1}">Next</a></td>
+            </c:if>
+
+        </c:when>
     </c:choose>
 
 </body>
