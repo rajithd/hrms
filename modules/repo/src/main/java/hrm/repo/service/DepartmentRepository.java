@@ -17,4 +17,6 @@ public interface DepartmentRepository {
 
     public int findMaxId() throws SQLException;
 
+    public Department findDepartmentByNameReg(String name) throws SQLException;
+
 }

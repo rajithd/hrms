@@ -64,7 +64,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public List<Employee> searchEmployeeByNames(String firstName, String lastName) throws SQLException {
-        final String sql = " select employees.first_name,employees.last_name,titles.title from employees,titles where first_name like '?' or last_name like '?' and employees.id=titles.emp_no";
+        final String sql = " select employees.first_name,employees.last_name,titles.title from employees,titles where first_name like '"+firstName+"%' or last_name like '"+lastName+"%' and employees.id=titles.emp_no limit 10";
         Object[] params = new Object[]{"@"+firstName,"@"+lastName};
         List<Employee> employees = jdbcTemplate.query(sql,new RowMapper<Employee>() {
             @Override

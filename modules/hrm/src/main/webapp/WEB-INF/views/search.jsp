@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rajith
-  Date: 12/18/12
-  Time: 12:35 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,7 +7,7 @@
 <body>
     <form method="post">
         <label>Search Criteria</label>
-        <input type="radio" name="searchCriteria" value="Employee" />Employee Search
+        <input type="radio" name="searchCriteria" value="Employee" checked />Employee Search
         <input type="radio" name="searchCriteria" value="Department" />Dept Search
         <br/>
         <br/>
@@ -31,5 +25,27 @@
         <input type="submit" value="Search" />
 
     </form>
+
+    <br/>
+
+    <c:choose>
+        <c:when test="${not empty department}">
+            <table border="2">
+                <thead style="color: gray">
+                    <tr>
+                        <td>Id</td>
+                        <td>Department Name</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><c:out value="${department.departmentId}" /></td>
+                        <td><c:out value="${department.name}"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </c:when>
+    </c:choose>
+
 </body>
 </html>

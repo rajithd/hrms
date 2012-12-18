@@ -65,6 +65,20 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
         return  jdbcTemplate.queryForInt(sql);
     }
 
+    @Override
+    public Department findDepartmentByNameReg(String name) throws SQLException {
+        final String sql = "select * from departments where name like '"+name+"%'";
+        return jdbcTemplate.queryForObject(sql, new RowMapper<Department>() {
+            @Override
+            public Department mapRow(ResultSet resultSet, int i) throws SQLException {
+                Department department1 = new Department();
+                department1.setDepartmentId(resultSet.getLong("id"));
+                department1.setName(resultSet.getString("name"));
+                return department1;
+            }
+        });
+    }
+
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
