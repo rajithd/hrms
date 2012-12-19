@@ -33,27 +33,50 @@ public class SearchController {
     private static int NUMBER_OF_RECORDS_PER_PAGE = 50;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String redirect(){
+    public String redirect(String searchCriteria, String firstName, String lastName, String departmentName, Model model, String page) throws SQLException {
+        if(firstName == null || lastName == null || departmentName == null){
+            return "search";
+        } else {
+            if (searchCriteria.equals("Employee")) {
+                int pageNo = 1;
+                if (page != null){
+                    pageNo = Integer.parseInt(page);
+                }
+                List<Employee> employees = employeeRepository.searchEmployeeByNames(firstName,lastName,(pageNo-1)*NUMBER_OF_RECORDS_PER_PAGE,NUMBER_OF_RECORDS_PER_PAGE);
+                int noOfRecords = employeeRepository.noOfRecords();
+                int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / NUMBER_OF_RECORDS_PER_PAGE);
+                model.addAttribute("employees",employees);
+                model.addAttribute("noOfPages",noOfPages);
+                model.addAttribute("currentPage",pageNo);
+                model.addAttribute("firstName",firstName);
+                model.addAttribute("lastName",lastName);
+                model.addAttribute("departmentName",departmentName);
+                model.addAttribute("searchCriteria",searchCriteria);
+            } else if (searchCriteria.equals("Department")) {
+                Department department = departmentRepository.findDepartmentByNameReg(departmentName);
+                model.addAttribute("department", department);
+            }
+        }
         return "search";
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public String submit(String searchCriteria, String firstName, String lastName, String departmentName, Model model, String page) throws SQLException {
-        if (searchCriteria.equals("Employee")) {
-            int pageNo = 1;
-            if (page != null){
-                pageNo = Integer.parseInt(page);
-            }
-            List<Employee> employees = employeeRepository.searchEmployeeByNames(firstName,lastName,(pageNo-1)*NUMBER_OF_RECORDS_PER_PAGE,NUMBER_OF_RECORDS_PER_PAGE);
-            int noOfRecords = employeeRepository.noOfRecords();
-            int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / NUMBER_OF_RECORDS_PER_PAGE);
-            model.addAttribute("employees",employees);
-            model.addAttribute("noOfPages",noOfPages);
-            model.addAttribute("currentPage",pageNo);
-        } else if (searchCriteria.equals("Department")) {
-            Department department = departmentRepository.findDepartmentByNameReg(departmentName);
-            model.addAttribute("department", department);
-        }
+//        if (searchCriteria.equals("Employee")) {
+//            int pageNo = 1;
+//            if (page != null){
+//                pageNo = Integer.parseInt(page);
+//            }
+//            List<Employee> employees = employeeRepository.searchEmployeeByNames(firstName,lastName,(pageNo-1)*NUMBER_OF_RECORDS_PER_PAGE,NUMBER_OF_RECORDS_PER_PAGE);
+//            int noOfRecords = employeeRepository.noOfRecords();
+//            int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / NUMBER_OF_RECORDS_PER_PAGE);
+//            model.addAttribute("employees",employees);
+//            model.addAttribute("noOfPages",noOfPages);
+//            model.addAttribute("currentPage",pageNo);
+//        } else if (searchCriteria.equals("Department")) {
+//            Department department = departmentRepository.findDepartmentByNameReg(departmentName);
+//            model.addAttribute("department", department);
+//        }
         return "search";
     }
 

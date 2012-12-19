@@ -10,7 +10,9 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
     <beans:import resource="hrms-service.xml"/>
     <http>
         <intercept-url pattern="/main" access="ROLE_ADMIN_LOGIN,ROLE_HR_LOGIN,ROLE_USER_LOGIN"/>
-        <intercept-url pattern="/promotion" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/create-department" access="ROLE_ADMIN_LOGIN"/>
+        <intercept-url pattern="/create-employee" access="ROLE_CREATE_PROFILE"/>
+        <intercept-url pattern="/create-account" access="ROLE_CREATE_USER_ACCOUNT"/>
         <form-login login-page="/login" default-target-url="/main" authentication-failure-url="/login-error" always-use-default-target="true"/>
         <logout logout-success-url="/login"/>
 

@@ -5,7 +5,7 @@
     <title></title>
 </head>
 <body>
-    <form method="post">
+    <form method="get">
         <label>Search Criteria</label>
         <input type="radio" name="searchCriteria" value="Employee" checked />Employee Search
         <input type="radio" name="searchCriteria" value="Department" />Dept Search
@@ -78,7 +78,7 @@
                                 <td>${i}</td>
                             </c:when>
                             <c:otherwise>
-                                <td><a href="employee.do?page=${i}">${i}</a></td>
+                                <td><a href="search?searchCriteria=${searchCriteria}&firstName=${firstName}&lastName=${lastName}&departmentName=${departmentName}&page=${i}">${i}</a></td>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
@@ -86,7 +86,7 @@
             </table>
 
             <c:if test="${currentPage lt noOfPages}">
-                <td><a href="employee.do?page=${currentPage + 1}">Next</a></td>
+                <td><a href="search?page=${currentPage + 1}">Next</a></td>
             </c:if>
 
         </c:when>
