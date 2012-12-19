@@ -41,6 +41,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                 employee1.setLastName(resultSet.getString("last_name"));
                 employee1.setDateOfBirth(resultSet.getString("birth_date"));
                 employee1.setGender(resultSet.getString("gender"));
+                employee1.setHireDate(resultSet.getString("hire_date"));
                 return employee1;
             }
         });

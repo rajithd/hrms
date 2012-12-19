@@ -40,6 +40,13 @@ public class UserRepositoryImpl implements UserRepository {
         return pass.equals(password);
     }
 
+    @Override
+    public long findEmployeeNoByUsername(String username) throws SQLException {
+        final String sql = "select emp_no from users where username=?";
+        Object[] param = new Object[]{username};
+        return jdbcTemplate.queryForInt(sql,param);
+    }
+
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
