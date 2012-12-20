@@ -6,6 +6,7 @@
     <title></title>
 </head>
 <body>
+<jsp:include page="common/header.jsp"/>
 <form method="post">
 
     <sec:authorize ifAnyGranted="ROLE_ADMIN_LOGIN,ROLE_HR_LOGIN">

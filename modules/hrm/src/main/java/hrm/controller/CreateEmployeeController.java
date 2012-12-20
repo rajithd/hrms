@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 @RequestMapping(value = "/create-employee")
@@ -25,6 +26,8 @@ public class CreateEmployeeController {
     private TitleRepository titleRepository;
     @Autowired
     private DepartmentEmployeeRepository departmentEmployeeRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     public String redirect(){
@@ -44,11 +47,17 @@ public class CreateEmployeeController {
         salary.setEmployeeNo(employeeId);
         employeeDepartment.setEmployeeNo(employeeId);
         employeeDepartment.setDepartmentNo(Long.parseLong(employee.getDepartmentSelect()));
+        User user= new User();
+        user.setEmployeeNo(employeeId);
+        user.setUsername(String.valueOf(employeeId));
+        Random random = new Random();
+        user.setPassword(String.valueOf(random.nextInt(1000)));
         try {
             employeeRepository.create(employee);
             titleRepository.create(title);
             salaryRepository.create(salary);
             departmentEmployeeRepository.create(employeeDepartment);
+            userRepository.create(user);
         } catch (SQLException e) {
             e.printStackTrace();
             return "system-error";

@@ -6,6 +6,7 @@
     <title></title>
 </head>
 <body>
+<jsp:include page="common/header.jsp"/>
 <form method="post">
     <sec:authorize ifAnyGranted="ROLE_ADMIN_LOGIN,ROLE_HR_LOGIN">
         <label>Employee No</label>
@@ -14,10 +15,15 @@
             <label style="color: red">Please enter employee No</label>
         </c:if>
         <br/>
+        <input type="submit" value="Submit" />
         <br/>
     </sec:authorize>
 </form>
-<sec:authorize ifAnyGranted="ROLE_USER_LOGIN">
+<c:if test="${emptyEmployee}">
+    <h1>No Results found</h1>
+
+</c:if>
+<c:if test="${view}">
     <label>Employee No</label>
     <input type="text" value="<c:out value="${empNo}" />" disabled="disabled"/>
     <br/>
@@ -54,7 +60,7 @@
     <label>To Date</label>
     <input type="text" value="<c:out value="${salary.toDate}" />" disabled="disabled"/>
     <br/>
-</sec:authorize>
+</c:if>
 
 
 </body>

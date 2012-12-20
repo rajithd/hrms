@@ -5,6 +5,7 @@
     <title></title>
 </head>
 <body>
+<jsp:include page="common/header.jsp"/>
     <form method="get">
         <label>Search Criteria</label>
         <input type="radio" name="searchCriteria" value="Employee" checked />Employee Search

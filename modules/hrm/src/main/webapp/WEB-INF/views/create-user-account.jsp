@@ -5,6 +5,7 @@
     <title></title>
 </head>
 <body>
+<jsp:include page="common/header.jsp"/>
     <form method="post">
         <label>Employee No</label>
         <input type="text" name="employeeNo"/> <br/>

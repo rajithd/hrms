@@ -56,6 +56,37 @@ public class ViewProfileController {
             model.addAttribute("employee", employee);
             model.addAttribute("title", title);
             model.addAttribute("salary", salaries.get(salaries.size() - 1));
+            model.addAttribute("view", true);
+            return "view-profile";
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public String submit(String employeeNo, Model model) throws SQLException {
+        if (employeeNo == null || employeeNo.equals("")) {
+            model.addAttribute("empNoEmpty", true);
+            return "view-profile";
+        } else {
+            model.addAttribute("empNoEmpty", false);
+            long empNo = Long.parseLong(employeeNo);
+            Employee employee = null;
+            try {
+                employee = employeeRepository.findEmployeeById(empNo);
+            } catch (Exception e){
+                model.addAttribute("emptyEmployee",true);
+                return "view-profile";
+            }
+            if (employee == null){
+                model.addAttribute("emptyEmployee",true);
+                return "view-profile";
+            }
+            Title title = titleRepository.findTitleByEmpNo(empNo);
+            List<Salary> salaries = salaryRepository.findSalaryByEmpNo(empNo);
+            model.addAttribute("empNo", empNo);
+            model.addAttribute("employee", employee);
+            model.addAttribute("title", title);
+            model.addAttribute("salary", salaries.get(salaries.size() - 1));
+            model.addAttribute("view", true);
             return "view-profile";
         }
     }
