@@ -11,4 +11,6 @@ public interface UserRepository {
     public void changePassword(String newPassword, String username) throws SQLException;
 
     public boolean isCorrectCurrentPassword(String password, String username) throws SQLException;
+
+    public long findEmployeeNoByUsername(String username) throws SQLException;
 }

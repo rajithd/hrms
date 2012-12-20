@@ -2,6 +2,9 @@ package hrm.repo.service;
 
 import hrm.repo.domain.Salary;
 
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Rajith
@@ -12,4 +15,6 @@ import hrm.repo.domain.Salary;
 public interface SalaryRepository {
 
     public void create(Salary salary);
+
+    public List<Salary> findSalaryByEmpNo(long empNo) throws SQLException;
 }

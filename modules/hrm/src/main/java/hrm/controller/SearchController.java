@@ -13,13 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Rajith
- * Date: 12/18/12
- * Time: 12:39 AM
- * To change this template use File | Settings | File Templates.
- */
+
 @Controller
 @RequestMapping(value = "/search")
 public class SearchController {

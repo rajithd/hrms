@@ -19,8 +19,8 @@
 <a href="create-employee">Create User Profile</a>
 </sec:authorize>
 
-<a href="">View User Profile</a>
-<a href="">Change Password</a>
+<a href="view-profile">View User Profile</a>
+<a href="change-password">Change Password</a>
 <a href="search">Search</a>
 
 <a href=<c:url value="/j_spring_security_logout"/>>Sign Out</a>
