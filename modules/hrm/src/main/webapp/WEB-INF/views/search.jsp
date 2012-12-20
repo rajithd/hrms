@@ -60,7 +60,7 @@
                         <tr>
                             <td><c:out value="${employee.firstName}" /></td>
                             <td><c:out value="${employee.lastName}"/></td>
-                            <td><c:out value="${employee.lastName}"/></td>
+                            <td><c:out value="${employee.title.titleName}"/></td>
                         </tr>
                     </c:forEach>
                 </tbody>
