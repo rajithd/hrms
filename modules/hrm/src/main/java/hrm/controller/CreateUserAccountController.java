@@ -47,7 +47,7 @@ public class CreateUserAccountController {
     public String submit(User user) throws SQLException {
         userRepository.create(user);
         createAuthorityBasedOnLevel(user.getLevel(),user.getEmployeeNo());
-        return "main";
+        return "success";
     }
 
     private void createAuthorityBasedOnLevel(String level, long empNo) throws SQLException {

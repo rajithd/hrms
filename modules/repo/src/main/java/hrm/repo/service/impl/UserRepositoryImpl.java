@@ -44,7 +44,14 @@ public class UserRepositoryImpl implements UserRepository {
     public long findEmployeeNoByUsername(String username) throws SQLException {
         final String sql = "select emp_no from users where username=?";
         Object[] param = new Object[]{username};
-        return jdbcTemplate.queryForInt(sql,param);
+        return jdbcTemplate.queryForInt(sql, param);
+    }
+
+    @Override
+    public String findUsernameByEmpNo(long empNo) throws SQLException {
+        final String sql = "select username from users where emp_no=?";
+        Object[] param = new Object[]{empNo};
+        return jdbcTemplate.queryForObject(sql,param,String.class);
     }
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {

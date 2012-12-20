@@ -67,7 +67,7 @@
             </table>
             <br/>
             <c:if test="${currentPage != 1}">
-                <td><a href="employee.do?page=${currentPage - 1}">Previous</a></td>
+                <td><a href="search?searchCriteria=${searchCriteria}&firstName=${firstName}&lastName=${lastName}&departmentName=${departmentName}&page=${currentPage - 1}">Previous</a></td>
             </c:if>
 
             <table border="1" cellpadding="5" cellspacing="5">
@@ -86,7 +86,7 @@
             </table>
 
             <c:if test="${currentPage lt noOfPages}">
-                <td><a href="search?page=${currentPage + 1}">Next</a></td>
+                <td><a href="search?searchCriteria=${searchCriteria}&firstName=${firstName}&lastName=${lastName}&departmentName=${departmentName}&page=${currentPage + 1}">Next</a></td>
             </c:if>
 
         </c:when>

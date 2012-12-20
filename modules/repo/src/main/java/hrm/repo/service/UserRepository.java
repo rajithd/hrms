@@ -13,4 +13,6 @@ public interface UserRepository {
     public boolean isCorrectCurrentPassword(String password, String username) throws SQLException;
 
     public long findEmployeeNoByUsername(String username) throws SQLException;
+
+    public String findUsernameByEmpNo(long empNo) throws SQLException;
 }

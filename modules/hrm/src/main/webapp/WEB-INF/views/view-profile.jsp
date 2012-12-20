@@ -1,10 +1,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title></title>
 </head>
 <body>
+<form method="post">
+    <sec:authorize ifAnyGranted="ROLE_ADMIN_LOGIN,ROLE_HR_LOGIN">
+        <label>Employee No</label>
+        <input type="text" name="employeeNo"/>
+        <c:if test="${empNoEmpty}">
+            <label style="color: red">Please enter employee No</label>
+        </c:if>
+        <br/>
+        <br/>
+    </sec:authorize>
+</form>
+<sec:authorize ifAnyGranted="ROLE_USER_LOGIN">
     <label>Employee No</label>
     <input type="text" value="<c:out value="${empNo}" />" disabled="disabled"/>
     <br/>
@@ -41,6 +54,7 @@
     <label>To Date</label>
     <input type="text" value="<c:out value="${salary.toDate}" />" disabled="disabled"/>
     <br/>
+</sec:authorize>
 
 
 </body>

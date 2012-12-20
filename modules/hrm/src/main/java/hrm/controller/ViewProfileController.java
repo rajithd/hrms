@@ -9,6 +9,7 @@ import hrm.repo.service.TitleRepository;
 import hrm.repo.service.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,15 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Rajith
- * Date: 12/19/12
- * Time: 8:33 PM
- * To change this template use File | Settings | File Templates.
- */
+
 @Controller
 @RequestMapping(value = "/view-profile")
 public class ViewProfileController {
@@ -42,14 +40,23 @@ public class ViewProfileController {
     public String redirect(Model model) throws SQLException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
-        long empNo = userRepository.findEmployeeNoByUsername(username);
-        Employee employee = employeeRepository.findEmployeeById(empNo);
-        Title title = titleRepository.findTitleByEmpNo(empNo);
-        List<Salary> salaries = salaryRepository.findSalaryByEmpNo(empNo);
-        model.addAttribute("empNo",empNo);
-        model.addAttribute("employee",employee);
-        model.addAttribute("title",title);
-        model.addAttribute("salary",salaries.get(salaries.size()-1));
-        return "view-profile";
+        Collection<GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        Set<String> roles = new HashSet<String>();
+        for (GrantedAuthority role : authorities) {
+            roles.add(role.getAuthority());
+        }
+        if (roles.contains("ROLE_ADMIN_LOGIN") || roles.contains("ROLE_HR_LOGIN")) {
+            return "view-profile";
+        } else {
+            long empNo = userRepository.findEmployeeNoByUsername(username);
+            Employee employee = employeeRepository.findEmployeeById(empNo);
+            Title title = titleRepository.findTitleByEmpNo(empNo);
+            List<Salary> salaries = salaryRepository.findSalaryByEmpNo(empNo);
+            model.addAttribute("empNo", empNo);
+            model.addAttribute("employee", employee);
+            model.addAttribute("title", title);
+            model.addAttribute("salary", salaries.get(salaries.size() - 1));
+            return "view-profile";
+        }
     }
 }

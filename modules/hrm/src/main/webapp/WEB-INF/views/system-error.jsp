@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Rajith
-  Date: 12/12/12
-  Time: 11:22 PM
+  User: rajith
+  Date: 12/20/12
+  Time: 6:29 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,7 +11,7 @@
     <title></title>
 </head>
 <body>
-    <h1>Successfully update the information</h1>
+    <h1>System Error occured. Please try again later</h1>
     <br/>
     <a href="main">Main Page</a>
 </body>

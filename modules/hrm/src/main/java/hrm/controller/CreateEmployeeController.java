@@ -51,8 +51,9 @@ public class CreateEmployeeController {
             departmentEmployeeRepository.create(employeeDepartment);
         } catch (SQLException e) {
             e.printStackTrace();
+            return "system-error";
         }
-        return "create-employee";
+        return "success";
     }
 
 
