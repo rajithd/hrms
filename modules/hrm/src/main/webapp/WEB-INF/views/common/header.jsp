@@ -19,6 +19,10 @@
 <a href="create-employee">Create User Profile</a>
 </sec:authorize>
 
+<sec:authorize  ifAnyGranted="ROLE_ADMIN_LOGIN">
+<a href="account-activation">Account Activation</a>
+</sec:authorize>
+
 <a href="view-profile">View User Profile</a>
 <a href="change-password">Change Password</a>
 <a href="search">Search</a>

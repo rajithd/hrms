@@ -15,7 +15,7 @@ public interface EmployeeRepository {
 
     public Employee findEmployeeById(long id) throws SQLException;
 
-    public void changeEmployeeState(EmployeeState employeeState) throws SQLException;
+    public void changeEmployeeState(long empNo,String state) throws SQLException;
 
     public List<Employee> findAllEmployee() throws SQLException;
 

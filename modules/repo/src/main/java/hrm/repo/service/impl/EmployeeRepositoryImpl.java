@@ -48,8 +48,10 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     @Override
-    public void changeEmployeeState(EmployeeState employeeState) throws SQLException {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public void changeEmployeeState(long empNo, String state) throws SQLException {
+        final String sql = "update employees set status=? where id=?";
+        Object[] param = new Object[]{state,empNo};
+        jdbcTemplate.update(sql,param);
     }
 
     @Override
