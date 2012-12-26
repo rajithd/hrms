@@ -17,6 +17,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Responsible for change password based on user roles
+ */
 
 @Controller
 @RequestMapping(value = "/change-password")
@@ -47,9 +50,7 @@ public class ChangePasswordController {
                 return "change-password";
             }
             String empUsername = userRepository.findUsernameByEmpNo(Long.parseLong(employeeNo));
-            if (userRepository.isCorrectCurrentPassword(currentPassword, empUsername)) {
-                changePassword(newPassword, empUsername);
-            }
+            changePassword(newPassword,empUsername);
         } else {
             if (userRepository.isCorrectCurrentPassword(currentPassword, username)) {
                 changePassword(newPassword, username);

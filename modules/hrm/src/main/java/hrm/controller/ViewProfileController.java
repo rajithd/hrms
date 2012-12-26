@@ -22,6 +22,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Responsible for view profile
+ */
 
 @Controller
 @RequestMapping(value = "/view-profile")

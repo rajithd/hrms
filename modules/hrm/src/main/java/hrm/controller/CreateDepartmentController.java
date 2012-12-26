@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.sql.SQLException;
 
+/**
+ * Responsible for create departments
+ */
 
 @Controller
 @RequestMapping(value = "/create-department")

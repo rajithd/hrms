@@ -14,12 +14,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Rajith
- * Date: 12/17/12
- * Time: 11:39 PM
- * To change this template use File | Settings | File Templates.
+ * Responsible for create user account
  */
+
 @Controller
 @RequestMapping(value = "/create-account")
 public class CreateUserAccountController {

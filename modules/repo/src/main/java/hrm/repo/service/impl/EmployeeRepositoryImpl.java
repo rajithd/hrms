@@ -1,5 +1,6 @@
 package hrm.repo.service.impl;
 
+import hrm.repo.domain.Department;
 import hrm.repo.domain.Title;
 import hrm.repo.service.EmployeeRepository;
 import hrm.repo.domain.Employee;
@@ -50,8 +51,8 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     public void changeEmployeeState(long empNo, String state) throws SQLException {
         final String sql = "update employees set status=? where id=?";
-        Object[] param = new Object[]{state,empNo};
-        jdbcTemplate.update(sql,param);
+        Object[] param = new Object[]{state, empNo};
+        jdbcTemplate.update(sql, param);
     }
 
     @Override
@@ -66,23 +67,22 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     @Override
-    public List<Employee> searchEmployeeByNames(String firstName, String lastName, int offset, int noOfRecords) throws SQLException {
-        final String sql = " select employees.first_name,employees.last_name,titles.title from employees,titles where " +
-                "first_name like '"+firstName+"%' or last_name like '"+lastName+"%' " +
-                "limit "+offset+","+noOfRecords ;
-//        final String sql = " select employees.first_name,employees.last_name from employees where " +
-//                "first_name like '"+firstName+"%' or last_name like '"+lastName+"%' " +
-//                " limit "+offset+","+noOfRecords ;
-        Object[] params = new Object[]{"@"+firstName,"@"+lastName};
-        List<Employee> employees = jdbcTemplate.query(sql,new RowMapper<Employee>() {
+    public List<Employee> searchEmployeeByNames(String lastName, String title, String depName, int offset, int noOfRecords) throws SQLException {
+        final String sql = " select employees.last_name,titles.title,departments.name from employees,titles,departments where " +
+                "employees.last_name like '" + lastName + "%' OR titles.title like '" + title + "%' OR departments.name like '" + depName + "%' " +
+                "limit " + offset + "," + noOfRecords;
+
+        List<Employee> employees = jdbcTemplate.query(sql, new RowMapper<Employee>() {
             @Override
             public Employee mapRow(ResultSet resultSet, int i) throws SQLException {
                 Employee employee = new Employee();
-                employee.setFirstName(resultSet.getString("first_name"));
                 employee.setLastName(resultSet.getString("last_name"));
                 Title title = new Title();
                 title.setTitleName(resultSet.getString("title"));
                 employee.setTitle(title);
+                Department department = new Department();
+                department.setName(resultSet.getString("name"));
+                employee.setDepartment(department);
                 return employee;
             }
         });
@@ -91,7 +91,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public int noOfRecords() {
-        final String sql ="select count(*) from employees";
+        final String sql = "select count(*) from employees";
         return jdbcTemplate.queryForInt(sql);
     }
 

@@ -21,7 +21,7 @@ public interface EmployeeRepository {
 
     public int findMaxEmployeeId();
 
-    public List<Employee> searchEmployeeByNames(String firstName, String lastName, int offset, int noOfRecords) throws SQLException;
+    public List<Employee> searchEmployeeByNames(String lastName, String title, String depName, int offset, int noOfRecords) throws SQLException;
 
     public int noOfRecords();
 

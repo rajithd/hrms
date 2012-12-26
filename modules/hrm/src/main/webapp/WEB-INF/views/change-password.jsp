@@ -19,8 +19,11 @@
         <br/>
     </sec:authorize>
 
-    <label>Current Password</label>
-    <input type="text" name="currentPassword"/> <br/>
+    <sec:authorize ifAnyGranted="ROLE_USER_LOGIN">
+        <label>Current Password</label>
+        <input type="text" name="currentPassword"/> <br/>
+    </sec:authorize>
+
     <label>New Password</label>
     <input type="text" name="newPassword"/> <br/>
     <label>Confirm Password</label>

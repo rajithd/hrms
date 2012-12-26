@@ -9,6 +9,9 @@
 <form method="post">
     <label>Personal Details</label>
     <br/>
+    <label>Employee ID</label>
+    <input type="text" disabled="disabled" value="<c:out value="${empId}"/>"/>
+    <br/>
     <label>First Name</label>
     <input type="text" name="firstName"/> <br/>
     <label>Last Name</label>

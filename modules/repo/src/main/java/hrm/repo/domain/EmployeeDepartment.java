@@ -1,8 +1,6 @@
 package hrm.repo.domain;
 
 
-import java.util.Date;
-
 public class EmployeeDepartment {
 
     private long employeeNo;

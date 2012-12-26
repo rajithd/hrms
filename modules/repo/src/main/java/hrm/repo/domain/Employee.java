@@ -19,6 +19,15 @@ public class Employee {
     private EmployeeDepartment employeeDepartment;
     private EmployeeState status;
     private String departmentSelect;
+    private Department department;
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 
     public long getEmployeeNo() {
         return employeeNo;
